@@ -49,22 +49,41 @@ const optArticleSelector = '.post',
   optTitleListSelector = '.titles';
 
 function generateTitleLinks(){
-    /* [IN PROGRES] remove contents of titleList */
+    /* [DONE] remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
     console.log(titleList);
     titleList.innerHTML = '';
+
+    /* [DONE] find all the articles and save them to variable: articles */
+    let articles = document.querySelectorAll(optArticleSelector);
+    console.log(articles);
+
+    let html = '';
     
-    /* for each article */
+    /* [DONE] for each article */
+    //const articles = document.querySelectorAll(optArticleSelector);
+    //console.log(articles);
 
-        /* get the article id */
+    for(let article of articles){
+        /* [DONE] get the article id */
+        const articleId = article.getAttribute('id');
+        console.log(articleId);
 
-        /* find the title element */
+        /* [DONE] find the title element and 
+        get the title from the title element*/
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        console.log(articleTitle);
 
-        /* get the title from the title element */
+        /* [DONE] create HTML of the link */
+        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+        console.log(linkHTML);
 
-        /* create HTML of the link */
+        /* [IN PROGRESS] insert link into html variable */
+        html = html + linkHTML;
+        console.log('html:' + html);
+    }
 
-        /* insert link into titleList */
+    titleList.innerHTML = html;
 
 }
 
