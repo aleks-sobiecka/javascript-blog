@@ -32,7 +32,7 @@
   const targetArticle = document.querySelector(articleSelector);
   console.log(targetArticle);
 
-  /* [IN PROGRESS] add class 'active' to the correct article */
+  /* [DONE] add class 'active' to the correct article */
   targetArticle.classList.add('active');
 
 
