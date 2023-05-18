@@ -38,11 +38,6 @@
 
   }
   
-  const links = document.querySelectorAll('.titles a');
-  
-  for(let link of links){
-    link.addEventListener('click', titleClickHandler);
-  }
 
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
@@ -85,6 +80,13 @@ function generateTitleLinks(){
 
     titleList.innerHTML = html;
 
+
+    const links = document.querySelectorAll('.titles a');
+    console.log(links);
+  
+    for(let link of links){
+        link.addEventListener('click', titleClickHandler);
+    }
 }
 
 generateTitleLinks();
