@@ -42,7 +42,8 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list';
+    optArticleTagsSelector = '.post-tags .list',
+    optArticleAuthorSelector = '.post-author';
 
   const generateTitleLinks = function(customSelector = ''){
     /* [DONE] remove contents of titleList */
@@ -53,6 +54,8 @@
     /* [DONE] find all the articles and save them to variable: articles */
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
     console.log(articles);
+    console.log(customSelector);
+    console.log(optArticleSelector + customSelector);
 
     let html = '';
 
@@ -181,7 +184,7 @@
     }
     /* [DONE] END LOOP: for each found tag link */
 
-    /* execute function "generateTitleLinks" with article selector as argument */
+    /* [TO BE CHECKED] execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]');
 
   };
@@ -203,6 +206,41 @@
   };
 
   addClickListenersToTags();
+
+  const generateAuthors = function(){
+    /* [DONE] find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    /* [DONE] START LOOP: for every article: */
+    for (let article of articles){
+
+      /* [DONE] find author wrapper */
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      console.log(authorWrapper);
+
+      /* [DONE] make hmtl variable with empty string */
+      let html = '';
+
+      /* [DONE] get author from data-author attribute */
+      const articleAuthor = article.getAttribute('data-author');
+      console.log(articleAuthor);
+
+      /* [DONE] generate HTLM of the link */
+      const linkHTML ='<a href="' + articleAuthor + '">' + articleAuthor + '</a>';
+      console.log(linkHTML);
+
+      /* [DONE] add generated code to html variable */
+      html = html +  linkHTML;
+
+      /* [DONE] insert HTML of link into the author wrapper */
+      authorWrapper.innerHTML = html;
+
+    }
+    /* [DONE] END LOOP: for every article: */
+  };
+
+  generateAuthors();
+
 
 
 }
