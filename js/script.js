@@ -290,19 +290,13 @@
       const authorWrapper = article.querySelector(optArticleAuthorSelector);
       console.log(authorWrapper);
 
-      /* [DONE] make hmtl variable with empty string */
-      let html = '';
-
       /* [DONE] get author from data-author attribute */
       const articleAuthor = article.getAttribute('data-author');
       console.log(articleAuthor);
 
       /* [DONE] generate HTLM of the link */
-      const linkHTML ='<a href="' + articleAuthor + '">' + articleAuthor + '</a>';
+      const linkHTML ='by <a href="' + articleAuthor + '">' + articleAuthor + '</a>';
       console.log(linkHTML);
-
-      /* [DONE] add generated code to html variable */
-      html = html +  linkHTML;
 
       /* [NEW] check if this link is NOT already in allAuthors */
       if(!allAuthors[articleAuthor]){
@@ -313,7 +307,7 @@
       }
 
       /* [DONE] insert HTML of link into the author wrapper */
-      authorWrapper.innerHTML = html;
+      authorWrapper.innerHTML = linkHTML;
 
     }
     /* [DONE] END LOOP: for every article: */
