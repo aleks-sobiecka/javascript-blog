@@ -277,8 +277,8 @@
   addClickListenersToTags();
 
   const generateAuthors = function(){
-    /* [NEW] create a new variable allAuthors with an empty array */
-    let allAuthors = [];
+    /* [NEW] create a new variable allAuthors with an empty object */
+    let allAuthors = {};
 
     /* [DONE] find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
@@ -305,9 +305,11 @@
       html = html +  linkHTML;
 
       /* [NEW] check if this link is NOT already in allAuthors */
-      if(allAuthors.indexOf(linkHTML) == -1){
-        /* [NEW] add generated code to allAuthors array */
-        allAuthors.push(linkHTML);
+      if(!allAuthors[articleAuthor]){
+        /* [NEW] add author to allAuthors obect */
+        allAuthors[articleAuthor] = 1;
+      } else {
+        allAuthors[articleAuthor]++;
       }
 
       /* [DONE] insert HTML of link into the author wrapper */
@@ -320,7 +322,8 @@
     const authorList = document.querySelector(optAuthorsListSelector);
 
     /* [NEW] add html from allAuthors to authorList*/
-    authorList.innerHTML = allAuthors.join(' ');
+    //authorList.innerHTML = allAuthors.join(' ');
+    console.log(allAuthors);
   };
 
   generateAuthors();
