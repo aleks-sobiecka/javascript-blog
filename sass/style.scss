@@ -127,3 +127,30 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/* Tags */
+
+.tag-size-1 {
+  font-size: 14px;
+  color: green;
+}
+
+.tag-size-2 {
+  font-size: 18px;
+  color: orange;
+}
+
+.tag-size-3 {
+  font-size: 24px;
+  color: purple;
+}
+
+.tag-size-4 {
+  font-size: 32px;
+  color: red;
+}
+
+.tags li {
+  display: inline-block;
+  padding: 0 5px;
+}
