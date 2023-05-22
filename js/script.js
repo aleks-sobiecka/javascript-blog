@@ -1,6 +1,10 @@
 {
   'use strict';
 
+  const templates = {
+    articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML)
+  };
+
   const opts = {
     articleSelector: '.post',
     titleSelector: '.post-title',
@@ -76,8 +80,10 @@
       const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
       console.log(articleTitle);
 
-      /* [DONE] create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      /* [DONE- Handlebars] create HTML of the link */
+      // const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+      const linkHTMLData = {id: articleId, title: articleTitle};
+      const linkHTML = templates.articleLink(linkHTMLData);
       console.log(linkHTML);
 
       /* [DONE] insert link into html variable */
@@ -158,7 +164,7 @@
       for (let tag of articleTagsArray){
         console.log(tag);
 
-        /* [DONE] generate HTML of the link */
+        /* [DONE- Handlebars] generate HTML of the link */
         const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
         console.log(linkHTML);
 
