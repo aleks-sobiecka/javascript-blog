@@ -321,9 +321,21 @@
     /* [NEW] find list of authors in right column */
     const authorList = document.querySelector(optAuthorsListSelector);
 
-    /* [NEW] add html from allAuthors to authorList*/
-    //authorList.innerHTML = allAuthors.join(' ');
-    console.log(allAuthors);
+    /* [NEW] create variable for all links HTML code */
+    let allAuthorsHTML = '';
+
+    /* [NEW] START LOOP: for each articleAuthor in allAuthors: */
+    for(let articleAuthor in allAuthors){
+
+      /* [NEW] generate code of a link and add it to allAuthorsHTML */
+      //allAuthorsHTML += articleAuthor + ' (' + allAuthors[articleAuthor] + ')';
+      allAuthorsHTML += '<li><a href="' + articleAuthor + '">' + articleAuthor + ' (' + allAuthors[articleAuthor] + ')' + '</a></li>';
+    }
+    /* [NEW] END LOOP: for each articleAuthor in allAuthors: */
+
+    /*[NEW] add HTML from allAuthorsHTML to authorList */
+    authorList.innerHTML = allAuthorsHTML;
+
   };
 
   generateAuthors();
@@ -345,7 +357,7 @@
     console.log(author);
 
     /* [DONE] find all author links with class active */
-    const activeAuthors = document.querySelectorAll('a.active[href^="by "]');
+    const activeAuthors = document.querySelectorAll('.list-authors a.active');
     console.log(activeAuthors);
 
     /* [DONE] START LOOP: for each active author link */
@@ -377,7 +389,7 @@
 
   const addClickListenersToAuthors = function(){
     /* [DONE] find all links to authors */
-    const links = document.querySelectorAll('.post-author a');
+    const links = document.querySelectorAll('.list-authors a');
 
     /* [DONE] START LOOP: for each link */
     for (let link of links){
