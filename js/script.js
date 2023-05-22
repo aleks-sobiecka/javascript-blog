@@ -222,7 +222,7 @@
   const addClickListenersToTags = function(){
 
     /* [DONE] find all links to tags */
-    const links = document.querySelectorAll('.list a');
+    const links = document.querySelectorAll('.post-tags a');
     console.log(links);
 
     /* [DONE] START LOOP: for each link */
